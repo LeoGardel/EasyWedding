@@ -1,0 +1,33 @@
+﻿@model IEnumerable<EasyWedding.Models.ShopItem>
+@{
+    ViewBag.Title = "Loja de Presentes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Loja de Presentes</h2>
+
+@if(!Model.Any())
+{
+    <text>Não há itens disponíveis no momento.</text>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <td>Itens</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var shopItem in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(shopItem.Name, "Show", "ShopItem", new { id = shopItem.Id }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
